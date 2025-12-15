@@ -1,6 +1,7 @@
 package mastermind.model;
 
 public enum Colour { // Good for constants, have type checking (e.g. RED)
+    EMPTY("#666666"),
     RED("#FF0000"),
     GREEN("#00FF00"),
     BLUE("#0000FF"),

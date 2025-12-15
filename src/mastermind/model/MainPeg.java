@@ -9,7 +9,7 @@ public final class MainPeg {
     };
 
     public MainPeg() {
-        this.pegColour = Colour.getRandomColour();
+        this.pegColour = Colour.EMPTY;
     };
 
     public Colour getColour() {
