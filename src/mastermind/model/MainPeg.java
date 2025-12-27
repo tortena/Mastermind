@@ -1,24 +1,19 @@
 package mastermind.model;
 
-public final class MainPeg {
+public enum MainPeg { // Good for constants, have type checking (e.g. RED)
+    EMPTY(),
+    RED(),
+    GREEN(),
+    BLUE(),
+    YELLOW(),
+    ORANGE(),
+    WHITE();
 
-    private final Colour pegColour;
 
-    public MainPeg(Colour colour) {
-        this.pegColour = colour;
-    };
+    public static MainPeg getRandomColour() {
+        MainPeg[] allMainPegs = MainPeg.values();
 
-    public MainPeg() {
-        this.pegColour = Colour.EMPTY;
-    };
-
-    public Colour getColour() {
-        return pegColour;
+        return allMainPegs[(int)(Math.random()*(allMainPegs.length))];
     }
-
-    public boolean sameAs(MainPeg otherPeg) {
-        return this.getColour().sameAs(otherPeg.getColour());
-    }
-
 
 }

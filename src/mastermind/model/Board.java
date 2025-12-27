@@ -1,19 +1,43 @@
 package mastermind.model;
 
-import java.util.List;
+import mastermind.interaction.DraftGuess;
+
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 public class Board {
-    private List<MainPegList> guesses;
-    private int guessNum;
+    private Guess[] guesses;
+    private int maxGuessNum;
+    private final int numPegs;
+    private int currentGuessNum;
 
-    public Board(int guessNum, int numPegs) {
-        this.guessNum=guessNum;
-        this.guesses = new ArrayList<>(guessNum);
+    public Board(int maxGuessNum, int numPegs) {
+        this.maxGuessNum=maxGuessNum;
+        this.guesses = new Guess[maxGuessNum];
+        this.numPegs = numPegs;
 
-        for (int i=0; i<this.guessNum;i++) {
-            guesses.add(new MainPegList(numPegs));
+        for (int i=0; i<this.maxGuessNum;i++) {
+            guesses[i] = new Guess(numPegs);
         }
+
+        this.currentGuessNum = 0;
     }
+
+    public ViewBoardState getViewBoardState(DraftGuess draftGuess) {
+        this.guesses[this.currentGuessNum] = new Guess(draftGuess);
+        ViewBoardState viewBoardState = new ViewBoardState(new ArrayList<>(Arrays.asList(this.guesses)));
+        this.guesses[this.currentGuessNum] = new Guess(this.numPegs);
+        return viewBoardState;
+    }
+
+    public ViewBoardState getViewBoardState() {
+        return new ViewBoardState(new ArrayList<>(Arrays.asList(this.guesses)));
+    }
+
+    public void setNextMove(DraftGuess draftGuess) {
+        this.guesses[this.currentGuessNum] = new Guess(draftGuess);
+        this.currentGuessNum += 1;
+    }
+
+
 }

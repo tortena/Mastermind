@@ -1,4 +1,7 @@
 package mastermind.model;
 
-public class HintPeg {
+public enum HintPeg {
+    EMPTY(),
+    CORRECT_POS(),
+    INCORRECT_POS();
 }
