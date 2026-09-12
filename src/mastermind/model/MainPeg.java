@@ -8,12 +8,4 @@ public enum MainPeg { // Good for constants, have type checking (e.g. RED)
     YELLOW(),
     ORANGE(),
     WHITE();
-
-
-    public static MainPeg getRandomColour() {
-        MainPeg[] allMainPegs = MainPeg.values();
-
-        return allMainPegs[(int)(Math.random()*(allMainPegs.length))];
-    }
-
 }

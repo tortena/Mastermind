@@ -30,6 +30,16 @@ public class DraftGuess {
     }
 
     public void setPeg(MainPeg newPeg, int index) throws IndexOutOfBoundsException {
+        if (newPeg == MainPeg.EMPTY) {
+            throw new InvalidPegChoice();
+        }
+
+        for (int i=0; i<this.numPegs;i++) {
+            if (i != index && this.pegList[i] == newPeg) {
+                throw new InvalidPegChoice();
+            }
+        }
+
         this.pegList[index] = newPeg;
     }
 
